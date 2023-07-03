@@ -1,11 +1,17 @@
 <script>
   const sum = function (a) {
-    if (typeof a !== 'number' || isNaN(a)) return 0;
+    if (typeof a !== 'number' || isNaN(a)) {
+      console.log('первый');
+      return 0;
+    }
+    console.log('второй');
 
     return function (b) {
       if (!b) {
+        console.log('третий');
         return a;
       }
+      console.log('четвертый');
       return sum(a + b);
     };
   };
@@ -14,4 +20,5 @@
   console.log(sum(1)()); // 1
   console.log(sum(1)(2)()); // 3
   console.log(sum(1)(20)(300)()); // 321
+  console.log(sum(1)(4000)(20)(300)()); // 321
 </script>
